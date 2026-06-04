@@ -15,7 +15,6 @@ h3{font-size:15px;font-weight:500;margin-bottom:0.75rem;color:var(--color-text-p
 .meta-input{font-size:15px;font-weight:500;background:none;border:none;border-bottom:1px solid var(--color-border-secondary);width:100%;outline:none;color:var(--color-text-primary);padding:2px 0}
 select.meta-input{cursor:pointer}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px}
-.form-row.three{grid-template-columns:1fr 1fr 1fr}
 .form-label{font-size:11px;color:var(--color-text-secondary);display:block;margin-bottom:3px}
 .form-row select,.form-row input[type=number]{width:100%;padding:7px 8px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;outline:none}
 .btn{padding:8px 14px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:none;cursor:pointer;font-size:13px;color:var(--color-text-primary);width:100%}
@@ -39,35 +38,34 @@ select.meta-input{cursor:pointer}
 .portfolio-val{font-weight:500;text-align:right}
 .bank-table{width:100%;border-collapse:collapse;font-size:11px}
 .bank-table th{text-align:left;padding:5px 6px;font-weight:500;color:var(--color-text-secondary);border-bottom:0.5px solid var(--color-border-tertiary);font-size:10px}
-.bank-table td{padding:5px 6px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary)}
+.bank-table td{padding:5px 6px;border-bottom:0.5px solid var(--color-border-tertiary);color:var(--color-text-primary);vertical-align:top}
 .bank-table tr:last-child td{border-bottom:none}
 .badge-up{color:#3B6D11;font-size:10px;font-weight:500}
 .badge-dn{color:#A32D2D;font-size:10px;font-weight:500}
-.chip{display:inline-block;padding:1px 6px;border-radius:20px;font-size:10px;font-weight:500;background:#EAF3DE;color:#3B6D11}
-.chip-bank{background:#E6F1FB;color:#185FA5}
-.withdraw-btn{padding:3px 8px;border:0.5px solid #FAC775;border-radius:var(--border-radius-md);background:#FAEEDA;color:#633806;font-size:10px;cursor:pointer}
 .kolo-info{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:6px 10px;font-size:12px;color:var(--color-text-secondary);margin-bottom:0.75rem;display:flex;justify-content:space-between;align-items:center}
 .divider{height:0.5px;background:var(--color-border-tertiary);margin:0.75rem 0}
-.akcie-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px}
+.akcie-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:13px}
 .akcie-row:last-child{border-bottom:none}
 .pos{color:#3B6D11}.neg{color:#A32D2D}
+.kolo-header{font-size:13px;font-weight:500;margin-bottom:0.5rem}
+.kolo-sub{font-size:11px;color:var(--color-text-secondary);margin-bottom:0.75rem}
 </style>
 
 <div class="wrap">
 <div class="tabs" role="tablist">
-  <button class="tab active" onclick="showTab('herni')" role="tab">Herní list</button>
+  <button class="tab active" onclick="showTab('herni')" role="tab">Herni list</button>
   <button class="tab" onclick="showTab('banka')" role="tab">Banka</button>
-  <button class="tab" onclick="showTab('trhy')" role="tab">Trhy</button>
+  <button class="tab" onclick="showTab('trhy')" role="tab">Ceny akcii</button>
 </div>
 
 <div id="tab-herni" class="section active">
   <div class="meta-grid">
     <div class="meta-box">
-      <div class="meta-label">Tým</div>
-      <input class="meta-input" id="tym" placeholder="Název týmu"/>
+      <div class="meta-label">Tym</div>
+      <input class="meta-input" id="tym" placeholder="Nazev tymu"/>
     </div>
     <div class="meta-box">
-      <div class="meta-label">Aktuální kolo</div>
+      <div class="meta-label">Aktualni kolo</div>
       <select class="meta-input" id="kolo-sel" onchange="onKoloChange()">
         <option value="1">Kolo 1</option><option value="2">Kolo 2</option>
         <option value="3">Kolo 3</option><option value="4">Kolo 4</option>
@@ -78,7 +76,7 @@ select.meta-input{cursor:pointer}
   </div>
 
   <div class="card">
-    <h3><i class="ti ti-shopping-cart" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Nová transakce</h3>
+    <h3><i class="ti ti-shopping-cart" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Nova transakce</h3>
     <div class="form-row">
       <div><label class="form-label">Firma</label>
         <select id="t-firma">
@@ -88,16 +86,16 @@ select.meta-input{cursor:pointer}
       </div>
       <div><label class="form-label">Typ transakce</label>
         <select id="t-typ" onchange="onTypChange()">
-          <option value="nakup">Nákup akcií</option>
-          <option value="prodej">Prodej akcií</option>
-          <option value="opce">Opce (−200 Kč)</option>
-          <option value="warrant">Warrant (−300 Kč)</option>
-          <option value="banka-vklad">Vložit do banky</option>
+          <option value="nakup">Nakup akcii</option>
+          <option value="prodej">Prodej akcii</option>
+          <option value="opce">Opce (-200 Kc)</option>
+          <option value="warrant">Warrant (-300 Kc)</option>
+          <option value="banka-vklad">Vlozit do banky</option>
         </select>
       </div>
     </div>
-    <div class="form-row" id="pocet-row">
-      <div><label class="form-label" id="pocet-label">Počet ks</label>
+    <div class="form-row">
+      <div><label class="form-label">Pocet ks</label>
         <input type="number" id="t-pocet" value="1" min="1"/>
       </div>
       <div style="display:flex;align-items:flex-end">
@@ -105,11 +103,11 @@ select.meta-input{cursor:pointer}
       </div>
     </div>
     <button class="btn btn-buy" id="add-btn" onclick="addTx()">
-      <i class="ti ti-plus" aria-hidden="true"></i> Přidat transakci
+      <i class="ti ti-plus" aria-hidden="true"></i> Pridat transakci
     </button>
     <div style="margin-top:8px">
       <button class="btn btn-div" onclick="applyDiverzifikace()">
-        <i class="ti ti-git-branch" aria-hidden="true"></i> Diverzifikace (+300 Kč za 3+ firmy)
+        <i class="ti ti-git-branch" aria-hidden="true"></i> Diverzifikace (+300 Kc za 3+ firmy)
       </button>
     </div>
   </div>
@@ -118,39 +116,37 @@ select.meta-input{cursor:pointer}
     <h3><i class="ti ti-briefcase" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Portfolio</h3>
     <div id="portfolio-content"></div>
     <div class="divider"></div>
-    <div class="summary-row"><span>Hodnota akcií</span><span id="s-akcie">0 Kč</span></div>
-    <div class="summary-row"><span>Hotovost</span><span id="s-hotovost">10 000 Kč</span></div>
-    <div class="summary-row"><span>Banka (aktuální hodnota)</span><span id="s-banka">0 Kč</span></div>
-    <div class="summary-row"><span>Celkem</span><span id="s-celkem">10 000 Kč</span></div>
+    <div class="summary-row"><span>Hodnota akcii</span><span id="s-akcie">0 Kc</span></div>
+    <div class="summary-row"><span>Hotovost</span><span id="s-hotovost">10 000 Kc</span></div>
+    <div class="summary-row"><span>Banka (aktualni hodnota)</span><span id="s-banka">0 Kc</span></div>
+    <div class="summary-row"><span>Celkem</span><span id="s-celkem">10 000 Kc</span></div>
   </div>
 
   <div class="card">
     <h3><i class="ti ti-list" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Transakce</h3>
     <ul class="log-list" id="log-list">
-      <li style="color:var(--color-text-secondary);font-style:italic;font-size:12px">Zatím žádné transakce.</li>
+      <li style="color:var(--color-text-secondary);font-style:italic;font-size:12px">Zatim zadne transakce.</li>
     </ul>
   </div>
 </div>
 
 <div id="tab-banka" class="section">
   <div class="kolo-info">
-    <span>Úrok: <b>+10 % za kolo</b> (složeně)</span>
+    <span>Urok: <b>+10 % za kolo</b> (slozene)</span>
     <span id="banka-kolo-info"></span>
   </div>
-
   <div class="card">
     <h3><i class="ti ti-building-bank" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Akcie v bance</h3>
     <div id="banka-tabulka"></div>
     <div class="divider"></div>
-    <div class="summary-row"><span>Celková hodnota v bance</span><span id="banka-total">0 Kč</span></div>
+    <div class="summary-row"><span>Celkova hodnota v bance</span><span id="banka-total">0 Kc</span></div>
   </div>
-
   <div class="card">
-    <h3><i class="ti ti-arrow-up-right" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Výběr z banky</h3>
+    <h3><i class="ti ti-coins" aria-hidden="true" style="font-size:15px;vertical-align:-2px;margin-right:5px"></i>Vyber z banky</h3>
     <div class="form-row">
-      <div><label class="form-label">Vklad k výběru</label>
+      <div><label class="form-label">Vklad k vyberu</label>
         <select id="banka-vyber-sel" style="width:100%;padding:7px 8px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;outline:none">
-          <option value="">— vyber vklad —</option>
+          <option value="">-- vyber vklad --</option>
         </select>
       </div>
       <div style="display:flex;align-items:flex-end">
@@ -158,13 +154,17 @@ select.meta-input{cursor:pointer}
       </div>
     </div>
     <button class="btn btn-withdraw" onclick="doVyber()">
-      <i class="ti ti-arrow-down-to-arc" aria-hidden="true"></i> Vybrat z banky
+      <i class="ti ti-arrow-up-right" aria-hidden="true"></i> Vybrat z banky
     </button>
   </div>
 </div>
 
 <div id="tab-trhy" class="section">
-  <div id="trhy-content"></div>
+  <div class="card">
+    <div class="kolo-header" id="trhy-kolo-title">Kolo 1 - aktualni ceny</div>
+    <div class="kolo-sub">Ceny akcii v tomto kole</div>
+    <div id="trhy-ceny"></div>
+  </div>
 </div>
 </div>
 
@@ -174,14 +174,14 @@ const START_CENA = 1000;
 const UROK = 0.10;
 
 const KOLA = [
-  {nazev:"Ekonomika roste",zmeny:{TechVision:5,EcoDrive:10,FoodStar:3,HealthPlus:8,GameWorld:7,GreenEnergy:2}},
-  {nazev:"Technologický boom",zmeny:{TechVision:12,EcoDrive:4,FoodStar:2,HealthPlus:6,GameWorld:-10,GreenEnergy:5}},
-  {nazev:"Skandál na trhu",zmeny:{TechVision:-8,EcoDrive:10,FoodStar:-15,HealthPlus:10,GameWorld:3,GreenEnergy:6}},
-  {nazev:"Energetická krize",zmeny:{TechVision:-5,EcoDrive:-8,FoodStar:50,HealthPlus:25,GameWorld:6,GreenEnergy:-20}},
-  {nazev:"Dividendový den",zmeny:{TechVision:50,EcoDrive:-50,FoodStar:3,HealthPlus:8,GameWorld:5,GreenEnergy:-4}},
-  {nazev:"Bankovní investice",zmeny:{TechVision:-6,EcoDrive:-5,FoodStar:30,HealthPlus:4,GameWorld:30,GreenEnergy:7}},
-  {nazev:"Spekulativní bublina",zmeny:{TechVision:-100,EcoDrive:-5,FoodStar:30,HealthPlus:4,GameWorld:30,GreenEnergy:100}},
-  {nazev:"Prasknutí bubliny",zmeny:{TechVision:50,EcoDrive:-50,FoodStar:-80,HealthPlus:50,GameWorld:-6,GreenEnergy:-8}}
+  {zmeny:{TechVision:5,EcoDrive:10,FoodStar:3,HealthPlus:8,GameWorld:7,GreenEnergy:2}},
+  {zmeny:{TechVision:12,EcoDrive:4,FoodStar:2,HealthPlus:6,GameWorld:-10,GreenEnergy:5}},
+  {zmeny:{TechVision:-8,EcoDrive:10,FoodStar:-15,HealthPlus:10,GameWorld:3,GreenEnergy:6}},
+  {zmeny:{TechVision:-5,EcoDrive:-8,FoodStar:50,HealthPlus:25,GameWorld:6,GreenEnergy:-20}},
+  {zmeny:{TechVision:50,EcoDrive:-50,FoodStar:3,HealthPlus:8,GameWorld:5,GreenEnergy:-4}},
+  {zmeny:{TechVision:-6,EcoDrive:-5,FoodStar:30,HealthPlus:4,GameWorld:30,GreenEnergy:7}},
+  {zmeny:{TechVision:-100,EcoDrive:-5,FoodStar:30,HealthPlus:4,GameWorld:30,GreenEnergy:100}},
+  {zmeny:{TechVision:50,EcoDrive:-50,FoodStar:-80,HealthPlus:50,GameWorld:-6,GreenEnergy:-8}}
 ];
 
 let hotovost = 10000;
@@ -189,7 +189,7 @@ let transakce = [];
 let bankaVklady = [];
 let bankaIdCounter = 0;
 
-function fmt(n){return Math.round(n).toLocaleString('cs-CZ')+" Kč"}
+function fmt(n){return Math.round(n).toLocaleString('cs-CZ')+" Kc";}
 
 function getCenyKolo(koloIdx){
   let ceny = {};
@@ -218,11 +218,10 @@ function showTab(id){
 function onTypChange(){
   const typ = document.getElementById('t-typ').value;
   const btn = document.getElementById('add-btn');
-  const pocetLabel = document.getElementById('pocet-label');
   if(typ==='nakup'){btn.className='btn btn-buy';btn.innerHTML='<i class="ti ti-plus" aria-hidden="true"></i> Nakoupit';}
   else if(typ==='prodej'){btn.className='btn btn-sell';btn.innerHTML='<i class="ti ti-minus" aria-hidden="true"></i> Prodat';}
-  else if(typ==='banka-vklad'){btn.className='btn btn-bank';btn.innerHTML='<i class="ti ti-building-bank" aria-hidden="true"></i> Vložit do banky';}
-  else{btn.className='btn btn-buy';btn.innerHTML='<i class="ti ti-plus" aria-hidden="true"></i> Přidat';}
+  else if(typ==='banka-vklad'){btn.className='btn btn-bank';btn.innerHTML='<i class="ti ti-building-bank" aria-hidden="true"></i> Vlozit do banky';}
+  else{btn.className='btn btn-buy';btn.innerHTML='<i class="ti ti-plus" aria-hidden="true"></i> Pridat';}
   updateCenaPreview();
 }
 
@@ -234,11 +233,11 @@ function updateCenaPreview(){
   const ceny = getCenyKolo(kolo-1);
   const el = document.getElementById('cena-preview');
   if(typ==='nakup'||typ==='prodej'||typ==='banka-vklad'){
-    el.textContent = firma+': '+fmt(ceny[firma])+' × '+pocet+' = '+fmt(ceny[firma]*pocet);
+    el.textContent = firma+': '+fmt(ceny[firma])+' x '+pocet+' = '+fmt(ceny[firma]*pocet);
   } else if(typ==='opce'){
-    el.textContent = 'Poplatek: 200 Kč';
+    el.textContent = 'Poplatek: 200 Kc';
   } else if(typ==='warrant'){
-    el.textContent = 'Poplatek: 300 Kč';
+    el.textContent = 'Poplatek: 300 Kc';
   } else {
     el.textContent='';
   }
@@ -253,6 +252,7 @@ function getPortfolio(){
   transakce.forEach(t=>{
     if(t.typ==='nakup') p[t.firma]=(p[t.firma]||0)+t.pocet;
     if(t.typ==='prodej') p[t.firma]=(p[t.firma]||0)-t.pocet;
+    if(t.typ==='banka-vklad') p[t.firma]=(p[t.firma]||0)-t.pocet;
   });
   return p;
 }
@@ -267,35 +267,29 @@ function addTx(){
 
   if(typ==='nakup'){
     const castka = cena*pocet;
-    if(castka>hotovost){alert('Nedostatek hotovosti! Máš '+fmt(hotovost));return;}
+    if(castka>hotovost){alert('Nedostatek hotovosti! Mas '+fmt(hotovost));return;}
     hotovost -= castka;
-    transakce.push({kolo,typ:'nakup',firma,pocet,cena,popis:'Nákup '+pocet+'× '+firma+' @ '+fmt(cena)+' = −'+fmt(castka)});
-
+    transakce.push({kolo,typ:'nakup',firma,pocet,cena,popis:'Nakup '+pocet+'x '+firma+' @ '+fmt(cena)+' = -'+fmt(castka)});
   } else if(typ==='prodej'){
     const p = getPortfolio();
-    if((p[firma]||0)<pocet){alert('Nemáš dost akcií '+firma+'!');return;}
+    if((p[firma]||0)<pocet){alert('Nemas dost akcii '+firma+'!');return;}
     const castka = cena*pocet;
     hotovost += castka;
-    transakce.push({kolo,typ:'prodej',firma,pocet,cena,popis:'Prodej '+pocet+'× '+firma+' @ '+fmt(cena)+' = +'+fmt(castka)});
-
+    transakce.push({kolo,typ:'prodej',firma,pocet,cena,popis:'Prodej '+pocet+'x '+firma+' @ '+fmt(cena)+' = +'+fmt(castka)});
   } else if(typ==='banka-vklad'){
     const p = getPortfolio();
-    if((p[firma]||0)<pocet){alert('Nemáš dost akcií '+firma+' v portfoliu!');return;}
-    const vkladCena = cena;
-    bankaVklady.push({id:bankaIdCounter++, firma, pocet, vkladCena, vkladKolo:kolo});
-    transakce.push({kolo,typ:'banka-vklad',firma,pocet,cena,popis:'Banka: '+pocet+'× '+firma+' @ '+fmt(vkladCena)+' (vloženo do banky)'});
-
+    if((p[firma]||0)<pocet){alert('Nemas dost akcii '+firma+' v portfoliu!');return;}
+    bankaVklady.push({id:bankaIdCounter++,firma,pocet,vkladCena:cena,vkladKolo:kolo});
+    transakce.push({kolo,typ:'banka-vklad',firma,pocet,cena,popis:'Banka: '+pocet+'x '+firma+' @ '+fmt(cena)+' (vlozeno do banky)'});
   } else if(typ==='opce'){
     if(200>hotovost){alert('Nedostatek hotovosti!');return;}
     hotovost-=200;
-    transakce.push({kolo,typ:'opce',firma,pocet:1,cena:200,popis:'Opce na '+firma+' = −200 Kč'});
-
+    transakce.push({kolo,typ:'opce',firma,pocet:1,cena:200,popis:'Opce na '+firma+' = -200 Kc'});
   } else if(typ==='warrant'){
     if(300>hotovost){alert('Nedostatek hotovosti!');return;}
     hotovost-=300;
-    transakce.push({kolo,typ:'warrant',firma,pocet:1,cena:300,popis:'Warrant '+firma+' (80% = '+fmt(cena*0.8)+') = −300 Kč'});
+    transakce.push({kolo,typ:'warrant',firma,pocet:1,cena:300,popis:'Warrant '+firma+' (80% = '+fmt(cena*0.8)+') = -300 Kc'});
   }
-
   renderAll();
 }
 
@@ -326,28 +320,20 @@ function getBankaCelkem(){
 function renderPortfolio(){
   const kolo = getKoloNum();
   const ceny = getCenyKolo(kolo-1);
-  const p = {};
-  FIRMY.forEach(f=>p[f]=0);
-  transakce.forEach(t=>{
-    if(t.typ==='nakup') p[t.firma]=(p[t.firma]||0)+t.pocet;
-    if(t.typ==='prodej') p[t.firma]=(p[t.firma]||0)-t.pocet;
-    if(t.typ==='banka-vklad') p[t.firma]=(p[t.firma]||0)-t.pocet;
-  });
-
+  const p = getPortfolio();
   let hodnotaAkcii = 0;
   const items = FIRMY.filter(f=>p[f]>0).map(f=>{
     const val = p[f]*ceny[f];
     hodnotaAkcii += val;
     return `<div class="portfolio-item">
       <div><div class="portfolio-firma">${f}</div>
-        <div class="portfolio-detail">${p[f]} ks × ${fmt(ceny[f])}</div>
+        <div class="portfolio-detail">${p[f]} ks x ${fmt(ceny[f])}</div>
       </div>
       <div class="portfolio-val">${fmt(val)}</div>
     </div>`;
   });
-
   const el = document.getElementById('portfolio-content');
-  el.innerHTML = items.length ? items.join('') : '<p style="font-size:12px;color:var(--color-text-secondary)">Žádné akcie v portfoliu.</p>';
+  el.innerHTML = items.length ? items.join('') : '<p style="font-size:12px;color:var(--color-text-secondary)">Zadne akcie v portfoliu.</p>';
   document.getElementById('s-akcie').textContent = fmt(hodnotaAkcii);
   document.getElementById('s-hotovost').textContent = fmt(hotovost);
   const bankaCelkem = getBankaCelkem();
@@ -358,7 +344,7 @@ function renderPortfolio(){
 function renderLog(){
   const ul = document.getElementById('log-list');
   if(transakce.length===0){
-    ul.innerHTML='<li style="color:var(--color-text-secondary);font-style:italic;font-size:12px">Zatím žádné transakce.</li>';return;
+    ul.innerHTML='<li style="color:var(--color-text-secondary);font-style:italic;font-size:12px">Zatim zadne transakce.</li>';return;
   }
   ul.innerHTML = transakce.map((t,i)=>`<li>
     <span class="log-kolo">Kolo ${t.kolo}</span>
@@ -370,51 +356,47 @@ function renderLog(){
 function renderBanka(){
   const kolo = getKoloNum();
   document.getElementById('banka-kolo-info').textContent = 'Kolo '+kolo;
-
   const tblEl = document.getElementById('banka-tabulka');
   if(bankaVklady.length===0){
-    tblEl.innerHTML='<p style="font-size:12px;color:var(--color-text-secondary)">Žádné vklady v bance.</p>';
+    tblEl.innerHTML='<p style="font-size:12px;color:var(--color-text-secondary)">Zadne vklady v bance.</p>';
   } else {
-    let rows = bankaVklady.map((v,i)=>{
+    const rows = bankaVklady.map((v)=>{
       const aktVal = getBankaAktualniHodnota(v, kolo);
       const kolaProbehlych = Math.max(0, kolo-v.vkladKolo);
       const zisk = aktVal - v.pocet*v.vkladCena;
-      const ziskPct = kolaProbehlych>0 ? (Math.pow(1+UROK, kolaProbehlych)-1)*100 : 0;
+      const ziskPct = kolaProbehlych>0 ? Math.round((Math.pow(1+UROK, kolaProbehlych)-1)*100) : 0;
       return `<tr>
         <td><b>${v.firma}</b><br><span style="color:var(--color-text-secondary);font-size:10px">${v.pocet} ks, K${v.vkladKolo}</span></td>
         <td>${fmt(v.vkladCena*v.pocet)}</td>
-        <td><b>${fmt(aktVal)}</b><br><span class="${zisk>=0?'badge-up':'badge-dn'}">${zisk>=0?'+':''}${Math.round(ziskPct)} %</span></td>
+        <td><b>${fmt(aktVal)}</b><br><span class="${zisk>=0?'badge-up':'badge-dn'}">${zisk>=0?'+':''}${ziskPct}%</span></td>
       </tr>`;
     }).join('');
     tblEl.innerHTML = `<table class="bank-table">
-      <thead><tr><th>Akcie</th><th>Vkladová hodnota</th><th>Aktuální hodnota</th></tr></thead>
+      <thead><tr><th>Akcie</th><th>Vkladova hodnota</th><th>Aktualni hodnota</th></tr></thead>
       <tbody>${rows}</tbody>
     </table>`;
   }
-
   document.getElementById('banka-total').textContent = fmt(getBankaCelkem());
 
   const sel = document.getElementById('banka-vyber-sel');
-  sel.innerHTML = '<option value="">— vyber vklad —</option>' +
+  sel.innerHTML = '<option value="">-- vyber vklad --</option>' +
     bankaVklady.map((v,i)=>{
       const aktVal = getBankaAktualniHodnota(v, kolo);
-      return `<option value="${i}">${v.firma} ${v.pocet}ks → ${fmt(aktVal)}</option>`;
+      return `<option value="${i}">${v.firma} ${v.pocet}ks - ${fmt(aktVal)}</option>`;
     }).join('');
-
   sel.onchange = function(){
     const idx = parseInt(this.value);
     const el = document.getElementById('vyber-preview');
     if(isNaN(idx)){el.textContent='';return;}
-    const v = bankaVklady[idx];
-    const aktVal = getBankaAktualniHodnota(v, kolo);
-    el.textContent = 'Obdržíš: '+fmt(aktVal);
+    const aktVal = getBankaAktualniHodnota(bankaVklady[idx], kolo);
+    el.textContent = 'Obdrzis: '+fmt(aktVal);
   };
 }
 
 function doVyber(){
   const sel = document.getElementById('banka-vyber-sel');
   const idx = parseInt(sel.value);
-  if(isNaN(idx)){alert('Vyber vklad k výběru.');return;}
+  if(isNaN(idx)){alert('Vyber vklad k vyberu.');return;}
   const kolo = getKoloNum();
   const v = bankaVklady[idx];
   const aktVal = getBankaAktualniHodnota(v, kolo);
@@ -422,8 +404,8 @@ function doVyber(){
   const kolaProbehlych = Math.max(0, kolo-v.vkladKolo);
   const ziskPct = kolaProbehlych>0 ? Math.round((Math.pow(1+UROK, kolaProbehlych)-1)*100) : 0;
   transakce.push({
-    kolo, typ:'banka-vyber', firma:v.firma, pocet:v.pocet, cena:aktVal/v.pocet,
-    popis:'Výběr z banky: '+v.pocet+'× '+v.firma+' → +'+fmt(aktVal)+' (úrok +'+ziskPct+'%)'
+    kolo,typ:'banka-vyber',firma:v.firma,pocet:v.pocet,cena:aktVal/v.pocet,
+    popis:'Vyber z banky: '+v.pocet+'x '+v.firma+' +'+fmt(aktVal)+' (urok +'+ziskPct+'%)'
   });
   bankaVklady.splice(idx,1);
   renderAll();
@@ -432,53 +414,39 @@ function doVyber(){
 
 function applyDiverzifikace(){
   const kolo = getKoloNum();
-  const p = {};
-  FIRMY.forEach(f=>p[f]=0);
-  transakce.forEach(t=>{
-    if(t.typ==='nakup') p[t.firma]=(p[t.firma]||0)+t.pocet;
-    if(t.typ==='prodej') p[t.firma]=(p[t.firma]||0)-t.pocet;
-    if(t.typ==='banka-vklad') p[t.firma]=(p[t.firma]||0)-t.pocet;
-  });
+  const p = getPortfolio();
   const pocetFirem = FIRMY.filter(f=>p[f]>0).length;
   if(pocetFirem>=3){
     hotovost+=300;
-    transakce.push({kolo,typ:'diverzifikace',firma:'—',pocet:0,cena:0,popis:'Diverzifikace ('+pocetFirem+' firmy) = +300 Kč'});
+    transakce.push({kolo,typ:'diverzifikace',firma:'--',pocet:0,cena:0,popis:'Diverzifikace ('+pocetFirem+' firmy) = +300 Kc'});
     renderAll();
-    alert('Diverzifikace: +300 Kč');
+    alert('Diverzifikace: +300 Kc pridano!');
   } else {
-    alert('Potřebuješ alespoň 3 různé firmy. Máš: '+pocetFirem);
+    alert('Potrebujes alespon 3 ruzne firmy. Mas: '+pocetFirem);
   }
 }
 
 function onKoloChange(){renderAll();}
 
 function renderTrhy(){
-  const el = document.getElementById('trhy-content');
-  el.innerHTML = KOLA.map((k,i)=>{
-    const cenyPred = getCenyKolo(i);
-    const cenyPo = getCenyKolo(i+1);
-    const rows = FIRMY.map(f=>{
-      const zm = k.zmeny[f];
-      const cls = zm>0?'pos':zm<0?'neg':'';
-      return `<div class="akcie-row">
-        <span style="font-size:12px;font-weight:500">${f}</span>
-        <span style="font-size:11px;color:var(--color-text-secondary)">${fmt(cenyPred[f])}</span>
-        <span class="${cls}" style="font-size:12px;font-weight:500">${zm>0?'+':''}${zm}%</span>
-        <span style="font-size:12px;font-weight:500">${fmt(cenyPo[f])}</span>
-      </div>`;
-    }).join('');
-    return `<div class="card" style="margin-bottom:0.75rem">
-      <h3 style="font-size:13px">Kolo ${i+1} – ${k.nazev}</h3>
-      <div style="display:grid;grid-template-columns:1fr 70px 50px 70px;font-size:10px;color:var(--color-text-secondary);padding:3px 0;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:2px">
-        <span>Firma</span><span style="text-align:right">Před</span><span style="text-align:center">Změna</span><span style="text-align:right">Po</span>
-      </div>${rows}</div>`;
+  const kolo = getKoloNum();
+  const ceny = getCenyKolo(kolo-1);
+  document.getElementById('trhy-kolo-title').textContent = 'Kolo '+kolo+' - aktualni ceny';
+  const rows = FIRMY.map(f=>{
+    return `<div class="akcie-row">
+      <span style="font-weight:500">${f}</span>
+      <span style="font-weight:500">${fmt(ceny[f])}</span>
+    </div>`;
   }).join('');
+  document.getElementById('trhy-ceny').innerHTML = rows;
 }
 
 function renderAll(){
   renderPortfolio();
   renderLog();
   updateCenaPreview();
+  if(document.getElementById('tab-trhy').classList.contains('active')) renderTrhy();
+  if(document.getElementById('tab-banka').classList.contains('active')) renderBanka();
 }
 
 renderAll();
